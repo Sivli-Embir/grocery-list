@@ -12,28 +12,16 @@
 
 
 			{{#ionContent}}
-
-			      {{#ionList}}
-
-			          {{#ionItem class='item-icon-left'}}
-			          {{#contentFor "listButtonRight"}}
-    <button class="button button-clear" onclick="alert('TODO')">Edit</button>
-  {{/contentFor}}
-									{{> ionIcon icon="ios-circle-filled"}}
-
-			            <h2>Item One</h2>
-			            <p>
-			              Item notes
-			              
-			            </p>
-			            
-
-			          {{/ionItem}}
-
-			      {{/ionList}}
-
+	      {{#ionList}}
+          {{#ionItem class='item-icon-left'}}
+					  {{> ionIcon icon="ios-circle-filled"}}
+            <h2>Item One</h2>
+            <p>Item notes</p>
+          {{/ionItem}}
+	      {{/ionList}}
 			{{/ionContent}}
 
 
 		{{/ionView}}
+  {{/ionBody}}
 </template>

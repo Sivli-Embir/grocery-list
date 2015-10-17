@@ -1,1 +1,1 @@
-Template.ListItem.onCreated ->
+Template.ItemView.onCreated ->

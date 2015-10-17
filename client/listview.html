@@ -13,11 +13,15 @@
 
 			{{#ionContent}}
 	      {{#ionList}}
-          {{#ionItem class='item-icon-left'}}
-					  {{> ionIcon icon="ios-circle-filled"}}
-            <h2>Item One</h2>
-            <p>Item notes</p>
-          {{/ionItem}}
+	      	{{#each items}}
+          	{{#ionItem class='item-icon-left item-button-right'}}
+						  {{> ionIcon icon="ios-circle-filled"}}
+						  
+          	  <h2>{{name}}</h2>
+          	  <p>Item notes</p>
+          	  <button class="button button-stable">Edit</button>
+          	{{/ionItem}}
+          {{/each}}
 	      {{/ionList}}
 			{{/ionContent}}
 

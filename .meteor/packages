@@ -26,5 +26,5 @@ iron:router
 
 fourseven:scss@3.3.3
 meteoric:ionic-sass
-#meteoric:ionicons-sass
+meteoric:ionicons-sass
 meteoric:ionic

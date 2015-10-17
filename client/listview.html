@@ -4,8 +4,37 @@
 		{{#contentFor "headerTitle"}}
 		<h1 class="title">Grocery Lists</h1>
 	  {{/contentFor}}
-		{{#ionContent}}
-			
-		{{/ionContent}}
+	  {{#ionView}}
+
+	  	{{#ionSubheaderBar}}
+	      <h2 class="title">Test List</h2>
+	    {{/ionSubheaderBar}}
+
+
+			{{#ionContent}}
+
+			      {{#ionList}}
+
+			          {{#ionItem class='item-icon-left'}}
+			          {{#contentFor "listButtonRight"}}
+    <button class="button button-clear" onclick="alert('TODO')">Edit</button>
+  {{/contentFor}}
+									{{> ionIcon icon="ios-circle-filled"}}
+
+			            <h2>Item One</h2>
+			            <p>
+			              Item notes
+			              
+			            </p>
+			            
+
+			          {{/ionItem}}
+
+			      {{/ionList}}
+
+			{{/ionContent}}
+
+
+		{{/ionView}}
 	{{/ionBody}}
 </template>

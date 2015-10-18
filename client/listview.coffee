@@ -15,9 +15,9 @@ Template.ListView.events
   'click [data-action=showActionSheet]': (e, t) ->
     IonActionSheet.show
       buttons: [
-        { text: 'Mass Edit' }
+        { text: 'Edit All Items' }
       ]
-      destructiveText: 'Remove all checked'
+      destructiveText: 'Delete All Checked Items'
       buttonClicked: (index) ->
         if index == 0
           t.edit.set true

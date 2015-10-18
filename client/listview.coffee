@@ -37,7 +37,7 @@ Template.ListViewEditItem.events
     name = $(e.target).val()
     Item.update @_id, $set: name: name if name
   'blur .notes': (e, t) -> Item.update @_id, $set: notes: t.$(e.target).val()
-  'blur .count': (e, t) -> Item.update @_id, $set: count: t.$(e.target).val()
+  'blur .count': (e, t) -> Item.update @_id, $set: count: parseFloat t.$(e.target).val()
   'click .remove': () -> Item.remove @_id
 
 Template._ListViewNewModal.events
@@ -45,6 +45,6 @@ Template._ListViewNewModal.events
     data = {
       name: t.$('.name').val()
       notes: t.$('.notes').val()
-      count: t.$('.count').val()
+      count: parseFloat t.$('.count').val()
     }
     Item.insert data

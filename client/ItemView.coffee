@@ -1,1 +1,0 @@
-Template.ItemView.onCreated ->

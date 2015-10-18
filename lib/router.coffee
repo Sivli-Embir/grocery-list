@@ -1,7 +1,9 @@
 Router.configure layoutTemplate: 'layout'
 
-Router.route '/', -> this.render 'ListView'
-Router.route '/item/:_id', -> this.render 'ItemView'
+Router.route '/', -> this.render 'ListSelect'
+Router.route '/list/new', -> this.render 'ListNew'
+Router.route '/list/:_id', -> this.render 'ListView'
+
 
 AccountsTemplates.configure
     defaultLayout: 'layoutNoop'

@@ -59,7 +59,7 @@
         <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
       </label>
       <label class="item item-input">
-        <input type="number" placeholder="Count" class="count" value="{{count}}">
+        <input type="number" pattern="[0-9]*" inputmode="numeric" placeholder="Count" class="count" value="{{count}}">
       </label>
       <button class="button button-small button-outline button-assertive remove">Remove</button>
     </div>
@@ -76,7 +76,7 @@
         <input type="text" placeholder="Comments" class="notes">
       </label>
       <label class="item item-input">
-        <input type="number" placeholder="Count" class="count">
+        <input type="number" pattern="[0-9]*" inputmode="numeric" placeholder="Count" class="count">
       </label>
       <button data-dismiss="modal" class="button button-block button-balanced add">Add</button>
     </div>

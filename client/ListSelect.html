@@ -42,24 +42,16 @@
   </Template>
 
 <template name='ListSelectShopItem'>
-  {{#ionItem iconLeft=true buttonRight=true}}
-    <h2>{{name}}</h2>
-    <p>
-    </p>
+  {{#ionItem href=url iconLeft=true}}
     {{> ionIcon icon="android-arrow-dropright"}}
-     <button class="button button-clear">{{> ionIcon icon="close"}}</button>
-    
+    <h2>{{name}}</h2>
   {{/ionItem}}
 </Template>
 
 <template name='ListSelectEditItem'>
-  {{#ionItem}}
-    <div class="list list-inset">
-      <label class="item item-input">
-        <input type="text" placeholder="Item Name" class="name" value="{{name}}">
-      </label>
-      <button class="button button-small button-outline button-assertive remove">Remove</button>
-    </div>
+  {{#ionItem buttonRight=true}}
+    <h2>{{name}}</h2>
+    <button class="button button-clear remove">{{> ionIcon icon="close"}}</button>
   {{/ionItem}}
 </template>
 

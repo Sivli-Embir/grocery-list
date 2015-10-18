@@ -20,3 +20,10 @@ Template._ListNewModal.events
     }
     id = List.insert data
     Meteor.users.update Meteor.userId(), $push: lists: id if id
+
+Template.ListSelectShopItem.helpers
+  url: -> "/lists/#{@_id}"
+
+
+Template.ListSelectEditItem.events
+  'click .remove': -> List.remove @_id

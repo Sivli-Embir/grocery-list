@@ -1,5 +1,5 @@
 Template.ListView.onCreated ->
-  @items = Item.find({list: Router.current().params._id}, {sort: {name: 1}})
+  @items = Item.find({listId: Router.current().params._id}, {sort: {name: 1}})
   @edit = new ReactiveVar(false)
 
 Template.ListView.onRendered ->
@@ -8,6 +8,7 @@ Template.ListView.onRendered ->
 Template.ListView.helpers
   items: -> Template.instance().items.fetch()
   editMode: -> Template.instance().edit.get()
+  url: -> '/lists'
 
 Template.ListView.events
   'click .closeChangeMode': -> Template.instance().edit.set false
@@ -44,6 +45,8 @@ Template._ListViewNewModal.events
     data = {
       name: t.$('.name').val()
       notes: t.$('.notes').val()
-      count: parseFloat t.$('.count').val()
+      count: parseFloat t.$('.count').val() if t.$('.count').val()
+      listId: Router.current().params._id
     }
+    console.log data
     Item.insert data

@@ -1,4 +1,7 @@
 <template name='ListView'>
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton href=url}}
+  {{/contentFor}}
 	{{#contentFor "headerTitle"}}
 	<h1 class="title">List Name</h1>
   {{/contentFor}}

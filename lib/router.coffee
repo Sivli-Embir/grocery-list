@@ -1,7 +1,10 @@
 Router.configure layoutTemplate: 'layout'
 
 Router.route '/lists', -> this.render 'ListSelect'
-Router.route '/lists/:_id', -> this.render 'ListView'
+Router.route '/lists/:_id', -> 
+  this.name = 'ListView'
+  this.render 'ListView'
+
 
 
 AccountsTemplates.configure

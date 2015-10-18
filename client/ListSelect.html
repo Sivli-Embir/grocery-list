@@ -1,3 +1,40 @@
 <Template name='ListSelect'>
+{{#contentFor "headerTitle"}}
+<h1 class="title">List Menu</h1>
+        <h2 class="title title-center">
+          {{#if editMode}}
+            Mass Edit Mode
+          {{else}}
+            List Menu
+          {{/if}}
+        </h2>
+<a href="" data-ion-modal="_ListViewNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
+  {{/contentFor}}
+
+{{#ionView}}
+    {{#ionContent}}
+        {{#ionList}}
+
+          {{#ionItem iconLeft=true}}
+
+            <h2>List Name</h2>
+            <p>
+            </p>
+            {{> ionIcon icon="ios-cart-outline"}}
+
+          {{/ionItem}}
+      {{/ionList}}
+            <div class="item item-divider">
+            A Divider in Case One is Needed
+            </div>
+    {{/ionContent}}
+ {{/ionView}}
 
 </Template>
+
+
+<!-- {{#ionSubheaderBar }}
+<h2 class="title title-center">
+Select list
+</h2>
+{{/ionSubheaderBar}} -->

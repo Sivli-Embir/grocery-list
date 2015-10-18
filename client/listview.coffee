@@ -1,5 +1,5 @@
 Template.ListView.onCreated ->
-  @items = Item.find()
+  @items = Item.find({}, {sort: {name: 1}})
   @edit = new ReactiveVar(false)
 
 Template.ListView.onRendered ->

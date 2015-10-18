@@ -1,31 +1,28 @@
 <template name='ListView'>
-	{{#ionBody}}
-		{{> ionNavBar class="bar-energized"}}
-		{{#contentFor "headerTitle"}}
-		<h1 class="title">Grocery Lists</h1>
-	  {{/contentFor}}
-	  {{#ionView}}
+	{{#contentFor "headerTitle"}}
+	<h1 class="title">Grocery Lists</h1>
+  {{/contentFor}}
+  {{#ionView}}
 
-	  	{{#ionSubheaderBar}}
-	      <h2 class="title">Test List</h2>
-	    {{/ionSubheaderBar}}
+  	{{#ionSubheaderBar}}
+      <h2 class="title">Test List</h2>
+    {{/ionSubheaderBar}}
 
 
-			{{#ionContent}}
-	      {{#ionList}}
-	      	{{#each items}}
-          	{{#ionItem class='item-icon-left item-button-right'}}
-						  {{> ionIcon icon="ios-circle-filled"}}
-						  
-          	  <h2>{{name}}</h2>
-          	  <p>Item notes</p>
-          	  <button class="button button-stable">Edit</button>
-          	{{/ionItem}}
-          {{/each}}
-	      {{/ionList}}
-			{{/ionContent}}
+		{{#ionContent}}
+      {{#ionList}}
+      	{{#each items}}
+        	{{#ionItem class='item-icon-left item-button-right'}}
+					  {{> ionIcon icon="ios-circle-filled"}}
+					  
+        	  <h2>{{name}}</h2>
+        	  <p>Item notes</p>
+        	  <button class="button button-stable">Edit</button>
+        	{{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+		{{/ionContent}}
 
 
-		{{/ionView}}
-  {{/ionBody}}
+	{{/ionView}}
 </template>

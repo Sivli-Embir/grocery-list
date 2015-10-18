@@ -1,10 +1,8 @@
 <Template name='ListSelect'>
   {{#contentFor "headerButtonLeft"}}
-    {{#if editMode}}
-      <button class="button button-clear closeChangeMode"> Done </button> 
-    {{else}}
-      <button data-action="showActionSheet" class="button button-clear"> Options </button> 
-    {{/if}}
+    <button class="button button-clear sendClickEvent">
+      {{#if editMode}} Done {{else}} Edit {{/if}}
+    </button> 
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
@@ -26,8 +24,8 @@
 
 
   {{#ionView}}
-
       {{#ionContent}}
+        <div class="getIonBodyEvent"></div> {{! a hack, see ionBody template }}
         {{#ionList}}
           {{#each lists}} 
             {{#if editMode}}
@@ -66,7 +64,7 @@
 
 
 <Template name='_ListNewModal'>
-{{#ionModal title="New Item"}}
+{{#ionModal title="New List"}}
     <div class="list list-inset">
       <label class="item item-input">
         <input type="text" placeholder="Item Name" class="name">

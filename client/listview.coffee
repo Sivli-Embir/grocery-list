@@ -8,7 +8,6 @@ Template.ListView.onRendered ->
 Template.ListView.helpers
   items: -> Template.instance().items.fetch()
   editMode: -> Template.instance().edit.get()
-  collection: -> Item
 
 Template.ListView.events
   'click .closeChangeMode': -> Template.instance().edit.set false

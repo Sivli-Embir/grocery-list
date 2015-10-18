@@ -1,37 +1,77 @@
 <Template name='ListSelect'>
-{{#contentFor "headerTitle"}}
-<h1 class="title">List Menu</h1>
-        <h2 class="title title-center">
-          {{#if editMode}}
-            Mass Edit Mode
-          {{else}}
-            List Menu
-          {{/if}}
-        </h2>
-<a href="" data-ion-modal="_ListNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
+  {{#contentFor "headerButtonLeft"}}
+    {{#if editMode}}
+      <button class="button button-clear closeChangeMode"> Done </button> 
+    {{else}}
+      <button data-action="showActionSheet" class="button button-clear"> Options </button> 
+    {{/if}}
   {{/contentFor}}
-{{#ionView}}
-    {{#ionContent}}
+
+  {{#contentFor "headerTitle"}}
+    <h2 class="title title-center">
+      {{#if editMode}}
+      Mass Edit Mode
+      {{else}}
+      List Menu
+      {{/if}}
+    </h2>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <a href="" data-ion-modal="_ListNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
+  {{/contentFor}}
+
+    
+
+
+
+  {{#ionView}}
+
+      {{#ionContent}}
         {{#ionList}}
+          {{#each lists}} 
+            {{#if editMode}}
+              {{> ListSelectEditItem }}
+            {{else}}
+              {{> ListSelectShopItem }}
+            {{/if}}
+            <!-- <div class="item item-divider">A Divider in Case One is Needed</div> -->
+          {{/each}}
+        {{/ionList}}
+      {{/ionContent}}
+  {{/ionView}}
 
-          {{#ionItem iconLeft=true}}
+  </Template>
 
-            <h2>List Name</h2>
-            <p>
-            </p>
-            {{> ionIcon icon="ios-cart-outline"}}
-
-          {{/ionItem}}
-      {{/ionList}}
-            <div class="item item-divider">
-            A Divider in Case One is Needed
-            </div>
-    {{/ionContent}}
- {{/ionView}}
-
+<template name='ListSelectShopItem'>
+  {{#ionItem iconLeft=true}}
+    <h2>{{name}}</h2>
+    <p>
+    </p>
+    {{> ionIcon icon="ios-cart-outline"}}
+  {{/ionItem}}
 </Template>
+
+<template name='ListSelectEditItem'>
+  {{#ionItem}}
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Item Name" class="name" value="{{name}}">
+      </label>
+      <button class="button button-small button-outline button-assertive remove">Remove</button>
+    </div>
+  {{/ionItem}}
+</template>
 
 
 <Template name='_ListNewModal'>
+{{#ionModal title="New Item"}}
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Item Name" class="name">
+      </label>
+      <button data-dismiss="modal" class="button button-block button-balanced add">Add</button>
+    </div>
+  {{/ionModal}}
 
 </Template>

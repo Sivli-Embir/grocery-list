@@ -1,7 +1,7 @@
 Template.ListSelect.onCreated ->
   @autorun =>
     @user = Meteor.user()
-    @lists = List.find _id: $in: @user.lists if @user and @user.lists
+    @lists = List.find()# _id: $in: @user.lists if @user and @user.lists
 
 Template.ListSelect.helpers
   lists: -> Template.instance().lists if Template.instance().user

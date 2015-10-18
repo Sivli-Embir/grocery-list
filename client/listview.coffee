@@ -11,3 +11,7 @@ Template.ListView.helpers
 
 Template.ListView.events
   'change .toggle': (e, t) -> Template.instance().edit.set $(e.target).prop( "checked" )
+  'click .new': (e, t) -> 
+    Template.instance().edit.set true
+    $('.toggle input').prop( "checked", true )
+    Item.insert name: 'New Item'

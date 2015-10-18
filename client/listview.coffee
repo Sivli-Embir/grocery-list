@@ -14,13 +14,10 @@ Template.ListView.events
   'click .closeChangeMode': -> Template.instance().edit.set false
   'click [data-action=showActionSheet]': (e, t) ->
     IonActionSheet.show
-      titleText: 'ActionSheet Example'
       buttons: [
         { text: 'Mass Edit' }
       ]
       destructiveText: 'Remove all checked'
-      cancelText: 'Cancel'
-      cancel: -> console.log 'Cancelled!'
       buttonClicked: (index) ->
         if index == 0
           t.edit.set true

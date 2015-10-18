@@ -28,3 +28,7 @@ fourseven:scss@3.3.3
 meteoric:ionic-sass
 meteoric:ionicons-sass
 meteoric:ionic
+
+accounts-password
+useraccounts:ionic 
+useraccounts:iron-routing

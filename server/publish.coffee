@@ -1,0 +1,1 @@
+Meteor.publish 'user', () -> Meteor.users.find @userId, {limit: 1, fields: lists: 1} if @userId

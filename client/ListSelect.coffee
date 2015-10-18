@@ -1,10 +1,11 @@
 Template.ListSelect.onCreated ->
+  @listIds = new ReactiveVar([])
   @autorun =>
-    @user = Meteor.user()
-    @lists = List.find()# _id: $in: @user.lists if @user and @user.lists
+    user = Meteor.user()
+    @listIds.set user.lists if user and user.lists
 
 Template.ListSelect.helpers
-  lists: -> Template.instance().lists if Template.instance().user
+  lists: -> List.find _id: $in: Template.instance().listIds.get()
 
 
 Template._ListNewModal.events
@@ -13,4 +14,4 @@ Template._ListNewModal.events
       name: t.$('.name').val()
     }
     id = List.insert data
-    Meteor.users.update Meteor.usersId(), $push: lists: id if id
+    Meteor.users.update Meteor.userId(), $push: lists: id if id

@@ -4,27 +4,24 @@
   {{/contentFor}}
   {{#ionView}}
 	  	{{#ionSubheaderBar }}
-	  		
-	  			<a href="/item/{{_id}}" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
-					  	<label class="toggle">
-		  		 <input type="checkbox">
-		  		 <div class="track">
-		  		   <div class="handle"></div>
-		  		 </div>
-				
-		</label>
-	      <h2 class="title">Shopping Mode</h2>
-	      
+				<label class="toggle changeMode pull-left">
+	  		  <input type="checkbox">
+          <div class="track"><div class="handle"></div></div>
+		    </label>
+	      <h2 class="title title-center">Shopping Mode</h2>
+	      <a href="/item/{{_id}}" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
 	    {{/ionSubheaderBar}}
 
 
 			{{#ionContent}}
 	      {{#ionList}}
-          {{#if editMode}}
-            {{#each items}} {{> ListViewEditItem }} {{/each}}
-          {{else}}
-	      	  {{#each items}} {{> ListViewShopItem }} {{/each}}
-          {{/if}}
+          {{#each items}} 
+            {{#if editMode}}
+              {{> ListViewEditItem }}
+            {{else}}
+  	      	  {{> ListViewShopItem }}
+            {{/if}}
+          {{/each}}
 	      {{/ionList}}
 			{{/ionContent}}
 	{{/ionView}}

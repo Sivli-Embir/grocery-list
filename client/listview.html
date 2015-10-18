@@ -1,11 +1,17 @@
 <template name='ListView'>
 	{{#contentFor "headerTitle"}}
-	<h1 class="title">Grocery Lists</h1>
+	<h1 class="title">List Name</h1>
   {{/contentFor}}
   {{#ionView}}
 	  	{{#ionSubheaderBar}}
-	      <h2 class="title">Test List</h2>
-	      <!-- <a href="/item/{{_id}}" class="button button-clear">{{> ionIcon icon="ios-compose-outline"}}</a> -->
+			  	<label class="toggle">
+		   <input type="checkbox">
+		   <div class="track">
+		     <div class="handle"></div>
+		   </div>
+
+		</label>
+	      <h2 class="title">Shopping Mode</h2>
 	    {{/ionSubheaderBar}}
 
 
@@ -16,7 +22,7 @@
 						  <label class="checkbox checkbox-balanced">
        					<input type="checkbox">
     					</label>
-						  
+						  <!-- <a href="/item/{{_id}}" class="button button-clear">{{> ionIcon icon="ios-compose-outline"}}</a> -->
           	  <h2>{{name}}</h2>
           	  <p>Item notes</p>
           	{{/ionItem}}

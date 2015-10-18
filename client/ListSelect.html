@@ -26,16 +26,18 @@
   {{#ionView}}
       {{#ionContent}}
         <div class="getIonBodyEvent"></div> {{! a hack, see ionBody template }}
-        {{#ionList}}
-          {{#each lists}} 
-            {{#if editMode}}
-              {{> ListSelectEditItem }}
-            {{else}}
-              {{> ListSelectShopItem }}
-            {{/if}}
-            <!-- <div class="item item-divider">A Divider in Case One is Needed</div> -->
-          {{/each}}
-        {{/ionList}}
+        {{#HammerTouchArea gestureMap=templateGestures}}
+          {{#ionList}}
+            {{#each lists}} 
+              {{#if editMode}}
+                {{> ListSelectEditItem }}
+              {{else}}
+                {{> ListSelectShopItem }}
+              {{/if}}
+              <!-- <div class="item item-divider">A Divider in Case One is Needed</div> -->
+            {{/each}}
+          {{/ionList}}
+        {{/HammerTouchArea}}
       {{/ionContent}}
   {{/ionView}}
 

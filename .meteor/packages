@@ -22,7 +22,7 @@ coffeescript
 reactive-var
 
 iron:router
-hammer:hammer
+chriswessels:hammer
 
 fourseven:scss@3.3.3
 meteoric:ionic-sass
@@ -36,3 +36,4 @@ useraccounts:iron-routing
 #models
 mreaction:shadow-schemas@0.1.4
 mreaction:shadow-models
+

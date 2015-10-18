@@ -8,7 +8,7 @@
     notes: (value) ->
       return @valid 'can be empty' if value is undefined
       return @valid 'is normal text' if _.isString value
-      return @invalid 'not sure what this is'
+      @invalid 'not sure what this is'
     count: (value) ->
       return @valid 'can be empty' if value is undefined
       return @invalid 'must be a number' unless _.isNumber value
@@ -21,9 +21,7 @@
     done: (value) ->
       return @valid 'can be false' if value is undefined
       return @valid 'can be boolean' if _.isBoolean value
-      return @invalid 'must be some form of boolean'
-
-
+      @invalid 'must be some form of boolean'
   helpers: {}
 
 @List = new ShadowModel

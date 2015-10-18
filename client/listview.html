@@ -39,7 +39,7 @@
       <input type="checkbox">
     </label>
     <h2>{{name}}</h2>
-    <p>Item notes</p>
+    <p>{{notes}}</p>
   {{/ionItem}}
 </template>
 
@@ -48,14 +48,12 @@
     <!-- class='item-checkbox item-button-right' -->
     <div class="list list-inset">
   	<label class="item item-input">
-    <input type="text" placeholder="Item Name">
+      <input type="text" placeholder="Item Name" class="name" value="{{name}}">
   	</label>
   	<label class="item item-input">
-    <input type="text" placeholder="Comments">
+      <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
   	</label>
-  	<button class="button button-small button-outline button-assertive">
-  Remove
-</button>
+    <button class="button button-small button-outline button-assertive remove">Remove</button>
 </div>
     <!-- <a href="/item/{{_id}}" class="button button-clear">{{> ionIcon icon="ios-compose-outline"}}</a> -->
   {{/ionItem}}

@@ -8,13 +8,26 @@ Template.ListView.onRendered ->
 Template.ListView.helpers
   items: -> Template.instance().items.fetch()
   editMode: -> Template.instance().edit.get()
+  collection: -> Item
 
 Template.ListView.events
-  'change .toggle': (e, t) -> Template.instance().edit.set t.$(e.target).prop( "checked" )
-  # 'click .new': (e, t) -> 
-  #   Template.instance().edit.set true
-  #   t.$('.toggle input').prop( "checked", true )
-  #   Item.insert name: 'New Item'
+  'click .closeChangeMode': -> Template.instance().edit.set false
+  'click [data-action=showActionSheet]': (e, t) ->
+    IonActionSheet.show
+      titleText: 'ActionSheet Example'
+      buttons: [
+        { text: 'Mass Edit' }
+      ]
+      destructiveText: 'Remove all checked'
+      cancelText: 'Cancel'
+      cancel: -> console.log 'Cancelled!'
+      buttonClicked: (index) ->
+        if index == 0
+          t.edit.set true
+          IonActionSheet.close()
+      destructiveButtonClicked: -> 
+        t.items.forEach (doc) -> Item.remove(doc._id) if doc.done
+        IonActionSheet.close()
 
 Template.ListViewShopItem.onRendered ->
   @$('.checkbox input').prop( "checked", @data.done ) if _.isBoolean @data.done
@@ -27,6 +40,7 @@ Template.ListViewEditItem.events
     name = $(e.target).val()
     Item.update @_id, $set: name: name if name
   'blur .notes': (e, t) -> Item.update @_id, $set: notes: t.$(e.target).val()
+  'blur .count': (e, t) -> Item.update @_id, $set: count: t.$(e.target).val()
   'click .remove': () -> Item.remove @_id
 
 Template._ListViewNewModal.events
@@ -34,5 +48,6 @@ Template._ListViewNewModal.events
     data = {
       name: t.$('.name').val()
       notes: t.$('.notes').val()
+      count: t.$('.count').val()
     }
     Item.insert data

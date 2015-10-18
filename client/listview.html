@@ -4,10 +4,13 @@
   {{/contentFor}}
   {{#ionView}}
 	  	{{#ionSubheaderBar }}
-				<label class="toggle changeMode pull-left toggle-balanced">
-	  		  <input type="checkbox">
-          <div class="track"><div class="handle"></div></div>
-		    </label>
+				<div class="pull-left changeMode">
+          {{#if editMode}}
+            <button class="button button-clear button-balanced closeChangeMode"> Done </button> 
+          {{else}}
+            <button data-action="showActionSheet" class="button button-clear button-balanced"> Options </button> 
+          {{/if}}
+		    </div>
 	      <h2 class="title title-center">
           {{#if editMode}}
             Mass Edit Mode
@@ -20,7 +23,7 @@
 
 
 			{{#ionContent}}
-	      {{#ionList}}
+	      {{#ionList ionSortable=collection}}
           {{#each items}} 
             {{#if editMode}}
               {{> ListViewEditItem }}
@@ -40,6 +43,9 @@
     </label>
     <h2>{{name}}</h2>
     <p>{{notes}}</p>
+    {{#if count}}
+      <span class="badge badge-balanced">{{count}} {{countType}}</span>
+    {{/if}}
   {{/ionItem}}
 </template>
 
@@ -52,6 +58,9 @@
       <label class="item item-input">
         <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
       </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Count" class="count" value="{{count}}">
+      </label>
       <button class="button button-small button-outline button-assertive remove">Remove</button>
     </div>
   {{/ionItem}}
@@ -61,10 +70,13 @@
   {{#ionModal title="New Item"}}
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="Item Name" class="name" value="{{name}}">
+        <input type="text" placeholder="Item Name" class="name">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
+        <input type="text" placeholder="Comments" class="notes">
+      </label>
+      <label class="item item-input">
+        <input type="number" placeholder="Count" class="count">
       </label>
       <button data-dismiss="modal" class="button button-block button-balanced add">Add</button>
     </div>

@@ -3,15 +3,18 @@
 	<h1 class="title">List Name</h1>
   {{/contentFor}}
   {{#ionView}}
-	  	{{#ionSubheaderBar}}
-			  	<label class="toggle">
-		   <input type="checkbox">
-		   <div class="track">
-		     <div class="handle"></div>
-		   </div>
-
+	  	{{#ionSubheaderBar }}
+	  		
+	  			<a href="/item/{{_id}}" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
+					  	<label class="toggle">
+		  		 <input type="checkbox">
+		  		 <div class="track">
+		  		   <div class="handle"></div>
+		  		 </div>
+				
 		</label>
 	      <h2 class="title">Shopping Mode</h2>
+	      
 	    {{/ionSubheaderBar}}
 
 

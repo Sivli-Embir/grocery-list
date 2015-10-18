@@ -18,6 +18,11 @@
       return @invalid 'must be an id' unless _.isString value
       return @invalid 'no list found' unless List.find(value, {limit:1}).count()
       @valid 'is valid'
+    done: (value) ->
+      return @valid 'can be false' if value is undefined
+      return @valid 'can be boolean' if _.isBoolean value
+      return @invalid 'must be some form of boolean'
+
 
   helpers: {}
 

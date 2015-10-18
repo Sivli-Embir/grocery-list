@@ -26,4 +26,6 @@ Template.ListSelectShopItem.helpers
 
 
 Template.ListSelectEditItem.events
-  'click .remove': -> List.remove @_id
+  'click .remove': -> 
+    Item.find(listId: @_id).forEach (doc) -> Item.remove doc._id
+    List.remove @_id

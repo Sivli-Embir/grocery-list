@@ -15,3 +15,6 @@ Template.ListView.events
     Template.instance().edit.set true
     $('.toggle input').prop( "checked", true )
     Item.insert name: 'New Item'
+
+Template.ListViewShopItem.events
+  'change': (e, t) -> console.log "clicked for #{@_id}"

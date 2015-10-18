@@ -8,7 +8,13 @@
 	  		  <input type="checkbox">
           <div class="track"><div class="handle"></div></div>
 		    </label>
-	      <h2 class="title title-center">Shopping Mode</h2>
+	      <h2 class="title title-center">
+          {{#if editMode}}
+            Mass Edit Mode
+          {{else}}
+            Shopping Mode
+          {{/if}}
+        </h2>
 	      <a href="" class="button button-clear pull-right new">{{> ionIcon icon="ios-plus-outline"}}</a>
 	    {{/ionSubheaderBar}}
 

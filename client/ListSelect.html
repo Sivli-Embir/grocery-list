@@ -44,11 +44,12 @@
   </Template>
 
 <template name='ListSelectShopItem'>
-  {{#ionItem iconLeft=true}}
+  {{#ionItem iconLeft=true buttonRight=true}}
     <h2>{{name}}</h2>
     <p>
     </p>
     {{> ionIcon icon="android-arrow-dropright"}}
+     <button class="button button-clear">{{> ionIcon icon="close"}}</button>
     
   {{/ionItem}}
 </Template>

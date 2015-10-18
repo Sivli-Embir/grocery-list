@@ -3,3 +3,4 @@ Template.ListView.onCreated ->
 
 Template.ListView.helpers
   items: -> Template.instance().items.fetch()
+  editMode: -> Session.get('editMode')

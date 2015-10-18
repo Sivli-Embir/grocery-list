@@ -11,17 +11,32 @@
 
 			{{#ionContent}}
 	      {{#ionList}}
-	      	{{#each items}}
-          	{{#ionItem class='item-checkbox item-button-right'}}
-						  <label class="checkbox checkbox-balanced">
-       					<input type="checkbox">
-    					</label>
-						  
-          	  <h2>{{name}}</h2>
-          	  <p>Item notes</p>
-          	{{/ionItem}}
-          {{/each}}
+          {{#if editMode}}
+            {{#each items}} {{> ListViewEditItem }} {{/each}}
+          {{else}}
+	      	  {{#each items}} {{> ListViewShopItem }} {{/each}}
+          {{/if}}
 	      {{/ionList}}
 			{{/ionContent}}
 	{{/ionView}}
+</template>
+
+<template name='ListViewShopItem'>
+  {{#ionItem class='item-checkbox item-button-right'}}
+    <label class="checkbox checkbox-balanced">
+      <input type="checkbox">
+    </label>
+    <h2>{{name}}</h2>
+    <p>Item notes</p>
+  {{/ionItem}}
+</template>
+
+<template name='ListViewEditItem'>
+  {{#ionItem class='item-checkbox item-button-right'}}
+    <label class="checkbox checkbox-balanced">
+      <input type="checkbox">
+    </label>
+    <h2>{{name}}</h2>
+    <p>Item notes</p>
+  {{/ionItem}}
 </template>

@@ -3,26 +3,25 @@
 	<h1 class="title">Grocery Lists</h1>
   {{/contentFor}}
   {{#ionView}}
-
-  	{{#ionSubheaderBar}}
-      <h2 class="title">Test List</h2>
-    {{/ionSubheaderBar}}
-
-
-		{{#ionContent}}
-      {{#ionList}}
-      	{{#each items}}
-        	{{#ionItem class='item-icon-left item-button-right'}}
-					  {{> ionIcon icon="ios-circle-filled"}}
-					  
-        	  <h2>{{name}}</h2>
-        	  <p>Item notes</p>
-        	  <button class="button button-stable">Edit</button>
-        	{{/ionItem}}
-        {{/each}}
-      {{/ionList}}
-		{{/ionContent}}
+	  	{{#ionSubheaderBar}}
+	      <h2 class="title">Test List</h2>
+	      <!-- <a href="/item/{{_id}}" class="button button-clear">{{> ionIcon icon="ios-compose-outline"}}</a> -->
+	    {{/ionSubheaderBar}}
 
 
+			{{#ionContent}}
+	      {{#ionList}}
+	      	{{#each items}}
+          	{{#ionItem class='item-checkbox item-button-right'}}
+						  <label class="checkbox checkbox-balanced">
+       					<input type="checkbox">
+    					</label>
+						  
+          	  <h2>{{name}}</h2>
+          	  <p>Item notes</p>
+          	{{/ionItem}}
+          {{/each}}
+	      {{/ionList}}
+			{{/ionContent}}
 	{{/ionView}}
 </template>

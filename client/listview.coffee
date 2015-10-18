@@ -11,10 +11,10 @@ Template.ListView.helpers
 
 Template.ListView.events
   'change .toggle': (e, t) -> Template.instance().edit.set t.$(e.target).prop( "checked" )
-  'click .new': (e, t) -> 
-    Template.instance().edit.set true
-    t.$('.toggle input').prop( "checked", true )
-    Item.insert name: 'New Item'
+  # 'click .new': (e, t) -> 
+  #   Template.instance().edit.set true
+  #   t.$('.toggle input').prop( "checked", true )
+  #   Item.insert name: 'New Item'
 
 Template.ListViewShopItem.onRendered ->
   @$('.checkbox input').prop( "checked", @data.done ) if _.isBoolean @data.done
@@ -28,3 +28,11 @@ Template.ListViewEditItem.events
     Item.update @_id, $set: name: name if name
   'blur .notes': (e, t) -> Item.update @_id, $set: notes: t.$(e.target).val()
   'click .remove': () -> Item.remove @_id
+
+Template._ListViewNewModal.events
+  'click .add': (e, t) ->
+    data = {
+      name: t.$('.name').val()
+      notes: t.$('.notes').val()
+    }
+    Item.insert data

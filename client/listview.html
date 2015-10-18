@@ -15,7 +15,7 @@
             Shopping Mode
           {{/if}}
         </h2>
-	      <a href="" class="button button-clear pull-right new">{{> ionIcon icon="ios-plus-outline"}}</a>
+	      <a href="" data-ion-modal="_ListViewNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
 	    {{/ionSubheaderBar}}
 
 
@@ -44,17 +44,29 @@
 </template>
 
 <template name='ListViewEditItem'>
-  {{#ionItem}} 
-    <!-- class='item-checkbox item-button-right' -->
+  {{#ionItem}}
     <div class="list list-inset">
-  	<label class="item item-input">
-      <input type="text" placeholder="Item Name" class="name" value="{{name}}">
-  	</label>
-  	<label class="item item-input">
-      <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
-  	</label>
-    <button class="button button-small button-outline button-assertive remove">Remove</button>
-</div>
-    <!-- <a href="/item/{{_id}}" class="button button-clear">{{> ionIcon icon="ios-compose-outline"}}</a> -->
+      <label class="item item-input">
+        <input type="text" placeholder="Item Name" class="name" value="{{name}}">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
+      </label>
+      <button class="button button-small button-outline button-assertive remove">Remove</button>
+    </div>
   {{/ionItem}}
+</template>
+
+<template name="_ListViewNewModal">
+  {{#ionModal title="My Modal"}}
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Item Name" class="name" value="{{name}}">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Comments" class="notes" value="{{notes}}">
+      </label>
+      <button data-dismiss="modal" class="button button-block button-positive add">Add</button>
+    </div>
+  {{/ionModal}}
 </template>

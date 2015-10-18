@@ -14,10 +14,18 @@
       return @invalid 'must be a number' unless _.isNumber value
       return @invalid 'must be a non negative number' unless value >= 0
       @valid 'is valid'
+    listId: (value) ->
+      return @invalid 'must be an id' unless _.isString value
+      return @invalid 'no list found' unless List.find(value, {limit:1}).count()
+      @valid 'is valid'
 
   helpers: {}
 
 @List = new ShadowModel
   collection: new Mongo.Collection('lists')
-  schema: {}
+  schema: 
+    name: (value) ->
+      return @invalid 'must be a alphanumeric' unless _.isString value
+      return @invalid 'must be not be empty' unless value.length
+      @valid 'is valid'
   helpers: {}

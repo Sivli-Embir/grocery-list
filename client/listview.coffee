@@ -1,5 +1,7 @@
 Template.ListView.onCreated ->
-  @items = Item.find({listId: Router.current().params._id}, {sort: {name: 1}})
+  listId = Router.current().params._id
+  @subscribe 'items', listId
+  @items = Item.find({listId: listId}, {sort: {name: [["name", "asc"]]}})
   @edit = new ReactiveVar(false)
 
 Template.ListView.onRendered ->

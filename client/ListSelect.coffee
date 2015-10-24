@@ -1,4 +1,5 @@
 Template.ListSelect.onCreated ->
+  @subscribe 'lists'
   @listIds = new ReactiveVar([])
   @edit = new ReactiveVar(false)
   @autorun =>
@@ -11,9 +12,9 @@ Template.ListSelect.events
 Template.ListSelect.helpers
   lists: -> List.find _id: $in: Template.instance().listIds.get()
   editMode: -> Template.instance().edit.get()
-  templateGestures:
-    'swiperight .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
-    'doubletap .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
+  # templateGestures:
+  #   'swiperight .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
+  #   'doubletap .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
 
 Template._ListNewModal.events
   'click .add': (e, t) ->

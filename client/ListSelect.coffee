@@ -28,6 +28,7 @@ Template.ListSelectEditItem.events
   'click .remove': -> 
     Item.find(listId: @_id).forEach (doc) -> Item.remove doc._id
     List.remove @_id
+  'blur .name': (e,t) -> List.update @_id, $set: name: $(e.target).val()
 
 Template.ListSelectHeaderLeft.helpers
   editMode: -> FlowRouter.getQueryParam('edit')

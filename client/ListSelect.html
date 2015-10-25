@@ -1,28 +1,24 @@
+<template name='ListSelectHeaderLeft'>
+  <button class="button button-clear sendClickEvent">
+    {{#if editMode}} Done {{else}} Edit {{/if}}
+  </button> 
+</template>
+
+<template name='ListSelectHeader'>
+  <h2 class="title title-center">
+    {{#if editMode}}
+    Mass Edit Mode
+    {{else}}
+    List Menu
+    {{/if}}
+  </h2>
+</template>
+
+<template name='ListSelectHeaderRight'>
+  <a href="" data-ion-modal="_ListNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
+</template>
+
 <Template name='ListSelect'>
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear sendClickEvent">
-      {{#if editMode}} Done {{else}} Edit {{/if}}
-    </button> 
-  {{/contentFor}}
-
-  {{#contentFor "headerTitle"}}
-    <h2 class="title title-center">
-      {{#if editMode}}
-      Mass Edit Mode
-      {{else}}
-      List Menu
-      {{/if}}
-    </h2>
-  {{/contentFor}}
-
-  {{#contentFor "headerButtonRight"}}
-    <a href="" data-ion-modal="_ListNewModal" class="button button-clear pull-right">{{> ionIcon icon="ios-plus-outline"}}</a>
-  {{/contentFor}}
-
-    
-
-
-
   {{#ionView}}
       {{#ionContent}}
         <div class="getIonBodyEvent"></div> {{! a hack, see ionBody template }}
@@ -52,7 +48,9 @@
 
 <template name='ListSelectEditItem'>
   {{#ionItem buttonRight=true}}
-    <h2>{{name}}</h2>
+    <label class="item item-input">
+      <input type="text" placeholder="Item Name" class="name" value="{{name}}">
+    </label>
     <button class="button button-clear remove">{{> ionIcon icon="close"}}</button>
   {{/ionItem}}
 </template>

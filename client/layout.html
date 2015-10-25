@@ -1,12 +1,17 @@
 <head>
-  <title> AgroSkan </title>
+  <title> List App </title>
   <meta mame="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
+
 <template name="layout">
   {{#ionBody}}
-    {{> ionNavBar class="bar-balanced"}}
+    <div class="bar bar-header bar-balanced nav-bar-block nav-bar-transition-{{transition}} nav-bar-direction-forward" data-navbar-container>
+      {{> Template.dynamic template=headerButtonLeft}}
+      {{> Template.dynamic template=headerTitle}}
+      {{> Template.dynamic template=headerButtonRight}}
+    </div>
     {{#ionNavView}}
-      {{> yield}}
+      {{> Template.dynamic template=main }}
     {{/ionNavView}}
   {{/ionBody}}
 </template>

@@ -1,10 +1,12 @@
+<template name='ListViewHeader'>
+  <h1 class="title">List Name</h1>
+</template>
+
+<template name='ListViewHeaderLeft'>
+  {{>ionNavBackButton href=url}}
+</template>
+
 <template name='ListView'>
-  {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton href=url}}
-  {{/contentFor}}
-	{{#contentFor "headerTitle"}}
-	<h1 class="title">List Name</h1>
-  {{/contentFor}}
   {{#ionView}}
 	  	{{#ionSubheaderBar }}
 				<div class="pull-left changeMode">

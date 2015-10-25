@@ -23,15 +23,19 @@ reactive-var
 
 #chriswessels:hammer
 
-iron:router
+#
+wecare:ionic-flow@0.2.6
+kadira:blaze-layout
+
+#
 fourseven:scss@3.3.3
 meteoric:ionic-sass
 meteoric:ionicons-sass
-meteoric:ionic
 
+#
 accounts-password
 useraccounts:ionic 
-useraccounts:iron-routing
+useraccounts:flow-routing
 
 #models
 mreaction:shadow-schemas@0.1.4

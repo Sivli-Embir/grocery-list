@@ -1,14 +1,8 @@
-Router.configure layoutTemplate: 'layout'
-
-Router.route '/lists', -> this.render 'ListSelect'
-Router.route '/lists/:_id', -> 
-  this.name = 'ListView'
-  this.render 'ListView'
-
-
-
 AccountsTemplates.configure
   defaultLayout: 'layoutNoop'
+  defaultLayoutRegions: {}
+  defaultContentRegion: 'main'
+
   confirmPassword: true
   enablePasswordChange: true
   overrideLoginErrors: true
@@ -27,4 +21,19 @@ AccountsTemplates.configureRoute 'signIn', path: '/'
 
 AccountsTemplates.configureRoute('enrollAccount')
 
-Router.plugin('ensureSignedIn')
+FlowRouter.route '/lists', 
+  name: 'Lists'
+  action: -> 
+    BlazeLayout.render 'layout', 
+      headerButtonLeft: 'ListSelectHeaderLeft'
+      headerTitle: 'ListSelectHeader' 
+      headerButtonRight: 'ListSelectHeaderRight'
+      main: "ListSelect"
+      
+FlowRouter.route '/lists/:_id', 
+  name: 'test'
+  action: ->  
+    BlazeLayout.render 'layout', 
+      main: "ListView"
+      headerButtonLeft: 'ListViewHeaderLeft'
+      headerTitle: 'ListViewHeader' 

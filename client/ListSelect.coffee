@@ -1,17 +1,13 @@
 Template.ListSelect.onCreated ->
   @subscribe 'lists'
   @listIds = new ReactiveVar([])
-  @edit = new ReactiveVar(false)
   @autorun =>
     user = Meteor.user()
     @listIds.set user.lists if user and user.lists
 
-Template.ListSelect.events
-  'click .getIonBodyEvent': (e, t) -> Template.instance().edit.set !Template.instance().edit.get()
-
 Template.ListSelect.helpers
   lists: -> List.find _id: $in: Template.instance().listIds.get()
-  editMode: -> Template.instance().edit.get()
+  editMode: -> FlowRouter.getQueryParam('edit')
   # templateGestures:
   #   'swiperight .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
   #   'doubletap .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
@@ -32,4 +28,10 @@ Template.ListSelectEditItem.events
   'click .remove': -> 
     Item.find(listId: @_id).forEach (doc) -> Item.remove doc._id
     List.remove @_id
-  
+
+Template.ListSelectHeaderLeft.helpers
+  editMode: -> FlowRouter.getQueryParam('edit')
+
+Template.ListSelectHeaderLeft.events
+  'click .button': ->
+    FlowRouter.setQueryParams edit: unless FlowRouter.getQueryParam('edit') then 'active' else null

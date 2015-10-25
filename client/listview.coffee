@@ -1,5 +1,5 @@
 Template.ListView.onCreated ->
-  listId = Router.current().params._id
+  listId = FlowRouter.getParam('_id')
   @subscribe 'items', listId
   @items = Item.find({listId: listId}, {sort: {name: [["name", "asc"]]}})
   @edit = new ReactiveVar(false)

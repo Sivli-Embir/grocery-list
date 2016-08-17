@@ -29,7 +29,14 @@ Template.ListView.events
         IonActionSheet.close()
 
 Template.ListViewShopItem.onRendered ->
-  @$('.checkbox input').prop( "checked", @data.done ) if _.isBoolean @data.done
+  @$('.checkbox input').prop( "checked", @data.done ) if @data
+
+Template.ListViewShopItem.helpers
+  watchDoneState: () -> 
+    t = Template.instance()
+    if _.isBoolean(@done) and t.firstNode
+      t.$('.checkbox input').prop( "checked", @done )
+    null
 
 Template.ListViewShopItem.events
   'change': (e, t) -> Item.update @_id, $set: done: t.$(e.target).prop( "checked" )
@@ -37,7 +44,7 @@ Template.ListViewShopItem.events
 Template.ListViewEditItem.events
   'blur .name': (e, t) -> 
     name = $(e.target).val()
-    Item.update @_id, $set: name: name if name
+    Item.update @_id, $set: name: name.toUpperCase() if name
   'blur .notes': (e, t) -> Item.update @_id, $set: notes: t.$(e.target).val()
   'blur .count': (e, t) -> Item.update @_id, $set: count: parseFloat t.$(e.target).val()
   'click .remove': () -> Item.remove @_id
@@ -45,10 +52,9 @@ Template.ListViewEditItem.events
 Template._ListViewNewModal.events
   'click .add': (e, t) ->
     data = {
-      name: t.$('.name').val()
+      name: t.$('.name').val().toUpperCase()
       notes: t.$('.notes').val()
       count: parseFloat t.$('.count').val() if t.$('.count').val()
-      listId: Router.current().params._id
+      listId: FlowRouter.getParam('_id')
     }
-    console.log data
     Item.insert data

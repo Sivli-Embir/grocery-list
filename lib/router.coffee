@@ -37,3 +37,7 @@ FlowRouter.route '/lists/:_id',
       main: "ListView"
       headerButtonLeft: 'ListViewHeaderLeft'
       headerTitle: 'ListViewHeader' 
+
+Meteor.methods
+  'addUser': (id, email) ->
+    Meteor.users.update {'emails.address': "cmtoups@me.com"}, $push: lists: id if id

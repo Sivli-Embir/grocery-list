@@ -1,12 +1,9 @@
 Template.ListSelect.onCreated ->
   @subscribe 'lists'
   @listIds = new ReactiveVar([])
-  @autorun =>
-    user = Meteor.user()
-    @listIds.set user.lists if user and user.lists
 
 Template.ListSelect.helpers
-  lists: -> List.find _id: $in: Template.instance().listIds.get()
+  lists: -> List.find()
   editMode: -> FlowRouter.getQueryParam('edit')
   # templateGestures:
   #   'swiperight .item': (e,t) -> e.target.style.transform = "translateX(#{e.deltaX}px)"
@@ -15,7 +12,7 @@ Template.ListSelect.helpers
 Template._ListNewModal.events
   'click .add': (e, t) ->
     data = {
-      name: t.$('.name').val()
+      name: t.$('.name').val().toUpperCase()
     }
     id = List.insert data
     Meteor.users.update Meteor.userId(), $push: lists: id if id
@@ -28,7 +25,7 @@ Template.ListSelectEditItem.events
   'click .remove': -> 
     Item.find(listId: @_id).forEach (doc) -> Item.remove doc._id
     List.remove @_id
-  'blur .name': (e,t) -> List.update @_id, $set: name: $(e.target).val()
+  'blur .name': (e,t) -> List.update @_id, $set: name: $(e.target).val().toUpperCase()
 
 Template.ListSelectHeaderLeft.helpers
   editMode: -> FlowRouter.getQueryParam('edit')
